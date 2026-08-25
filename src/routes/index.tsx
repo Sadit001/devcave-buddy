@@ -36,12 +36,12 @@ function Index() {
 
   const { scrollYProgress } = useScroll({
     target: heroBoundaryRef,
-    offset: ["end end", "end 12%"],
+    offset: ["end end", "end start"],
   });
   const easedProgress = useSpring(scrollYProgress, { stiffness: 70, damping: 26, mass: 0.35 });
   const transitionProgress = reducedMotion ? scrollYProgress : easedProgress;
-  const heroMix = useTransform(transitionProgress, [0, 0.45, 0.75, 1], ["100%", "88%", "46%", "0%"]);
-  const backgroundMix = useTransform(transitionProgress, [0, 0.45, 0.75, 1], ["0%", "12%", "54%", "100%"]);
+  const heroMix = useTransform(transitionProgress, [0, 0.4, 0.6, 0.8, 1], ["100%", "80%", "55%", "25%", "0%"]);
+  const backgroundMix = useTransform(transitionProgress, [0, 0.4, 0.6, 0.8, 1], ["0%", "20%", "45%", "75%", "100%"]);
   const pageBackground = useMotionTemplate`color-mix(in oklab, var(--dc-page-hero) ${heroMix}, var(--background) ${backgroundMix})`;
 
   return (
